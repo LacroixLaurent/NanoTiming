@@ -1,0 +1,21 @@
+executable = /users/YYY/XXX/work/miniconda3/envs/r4env/bin/Rscript
+accounting_group = LongJob.Weekly
+request_memory = 35G
+request_cpus = 12
+concurrency_limits = XXX_limit:240
+
+getenv = True
+
+Exp = WT_rep3
+
+NanoTimingDir = YourChoice
+path2work = $(NanoTimingDir)/$(Exp)
+
+batch_name = nanoT_parsing_$(Exp)
+arguments = $(path2work)/$(batch_name).r $(bam)
+
+output = $(path2work)/logs/$(batch_name)_$(Cluster)_$(Process).out
+error =  $(path2work)/logs/$(batch_name)_$(Cluster)_$(Process).err
+log =  $(path2work)/logs/$(batch_name)_$(Cluster)_$(Process).log
+
+queue bam from bam_list.txt

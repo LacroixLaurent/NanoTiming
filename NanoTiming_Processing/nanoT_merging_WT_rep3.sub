@@ -1,0 +1,21 @@
+executable = /users/YYY/XXX/work/miniconda3/envs/r4env/bin/Rscript
+accounting_group = LongJob.Weekly
+request_memory = 2G
+request_cpus = 1
+concurrency_limits = XXX_limit:274
+
+getenv = True
+
+Exp = WT_rep3
+
+NanoTimingDir = YourChoice
+path2work = $(NanoTimingDir)/$(Exp)
+
+batch_name = nanoT_merging_$(Exp)
+arguments = $(path2work)/$(batch_name).r
+
+output = $(path2work)/logs/$(batch_name).out
+error = $(path2work)/logs/$(batch_name).err
+log = $(path2work)/logs/$(batch_name).log
+
+queue

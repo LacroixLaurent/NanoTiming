@@ -1,0 +1,21 @@
+executable =/bin/bash
+accounting_group = LongJob.Weekly
+request_memory = 1G
+request_cpus = 1
+concurrency_limits = XXX_limit:874
+
+getenv = True
+
+Exp = WT_rep3
+
+NanoTimingDir = YourChoice
+path2work = $(NanoTimingDir)/$(Exp)
+
+batch_name = nanoT_cleaning_$(Exp)
+arguments =$(path2work)/$(batch_name).sh
+
+output = $(path2work)/logs/$(batch_name).out
+error = $(path2work)/logs/$(batch_name).err
+log = $(path2work)/logs/$(batch_name).log
+
+queue
