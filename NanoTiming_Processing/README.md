@@ -16,7 +16,8 @@ To generate session_info file
 
 ```R
 library(sessioninfo)  
-session_info() %>% capture.output(file="nanotiming_figures_session_info.txt")  
+session_info() %>% capture.output(file="nanotiming_processing_session_info.txt")  
 ``` 
 
+A yml file is provided to recreate the r4nanoT conda env (*r4nanoT_20240731.yml*)  
 ***

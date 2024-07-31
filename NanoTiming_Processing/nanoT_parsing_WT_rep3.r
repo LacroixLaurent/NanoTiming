@@ -22,5 +22,5 @@ nc <- 12L
 
 bamf <- bamfile
 i <- basename(bamf) %>% str_remove(".bam") %>% str_remove("mod_splitted_")
-outf <- paste0(path_out,Exp,"_",RefGen,"_meg_",i)
+outf <- paste0(path_out,Exp,"_meg_",i)
 parsing_BrdUbin(bam.in=bamf,out.file=outf,ncores=nc,bin.size=1000,savefile=T)

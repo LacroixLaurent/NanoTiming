@@ -1,4 +1,4 @@
-executable = /users/YYY/XXX/work/miniconda3/envs/r4env/bin/Rscript
+executable = /users/YYY/XXX/conda_envs/r4nanoT/bin/Rscript
 accounting_group = LongJob.Weekly
 request_memory = 2G
 request_cpus = 1

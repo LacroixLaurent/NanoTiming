@@ -1,6 +1,7 @@
 ### script to compute binned nanoT genomic profile
 
-suppressMessages(library(tidyverse))
+suppressMessages(library(dplyr))
+suppressMessages(library(tidyr))
 `%+%` <- paste0
 
 NanoTimingDir <- "YourChoice"
@@ -19,7 +20,7 @@ nanoT <- alldata %>%
 		filter(signal>0.02)%>%
 		group_by(chrom,positions)%>%
 		summarise(mean_br_bin=mean(signal))
-saveRDS(nanoT,file=paste0(path2work,"/",Exp,"_",RefGen,"_nanoT.rds"))
-saveRDS(alldata,file=paste0(path2work,"/",Exp,"_",RefGen,"_nanoT_alldata.rds"))
+saveRDS(nanoT,file=paste0(path2work,"/",Exp,"_nanoT.rds"))
+saveRDS(alldata,file=paste0(path2work,"/",Exp,"_nanoT_alldata.rds"))
 
 q("no")
