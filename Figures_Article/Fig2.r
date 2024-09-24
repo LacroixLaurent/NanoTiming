@@ -318,3 +318,45 @@ pl <- pl1/pl2/pl3/pl4/pl5/pl6/pl7 + plot_annotation(tag_levels = 'a',title="Figu
 quartz(file=paste0(path2fig,"Fig2.pdf"),height=14,width=10,type="pdf")
 pl
 dev.off()
+
+input2 <- bind_rows(input %>% filter(filename=="wt_rep1"),SortSeqWT)
+miny=0.8
+maxy=2.2
+
+pl1_A4 <- ggplot(input2 %>% filter(chrom==chr2plot))+
+	geom_vline(data=ars2plot,aes(xintercept=(start+end)/2),col=mypal[9],show.legend=F,linewidth=0.2)+
+	geom_vline(data=cen2plot,aes(xintercept=(start+end)/2),col=mypal[5],show.legend=F)+
+	geom_rect(data=rdna2plot,aes(xmin=start,xmax=end,ymin=0.9,ymax=1),col=NA,fill=mypal[21],show.legend=F,alpha=0.6)+
+	geom_point(aes(x=positions,y=mod,col=filename,group=filename),shape=16,size=0.2)+
+	scale_color_manual("",values=mypal1,labels = c("Relative copy number by sort-seq", "Mean BrdU content"))+
+	ylab("RT")+
+	xlab("Genomic position on chrXII (kb)")+
+	coord_cartesian(ylim=c(miny,maxy),expand=F)+
+	scale_x_continuous(
+		guide = "prism_minor",
+		labels=scales::unit_format(big.mark ="",suffix="",scale=1e-3,sep=""),
+		limits=c(1,seqlengths(seqinf)[12]),
+		breaks=seq(0,seqlengths(seqinf)[12],100000),
+		minor_breaks=seq(0,seqlengths(seqinf)[12],50000),
+		expand=c(0,0))+
+	theme(legend.position="top",axis.title.x=element_blank())+
+	guides(color = guide_legend(override.aes = list(size = 2)))+
+	annotate("text",x=10000,y=2.1,label="Early",hjust=0,fontface="italic",size=1.8)+
+	annotate("text",x=10000,y=0.9,label="Late",hjust=0,fontface="italic",size=1.8)
+
+
+pl_A4 <- pl1_A4/pl2/pl3/pl4/pl5/pl6/pl7 + plot_annotation(tag_levels = 'a',title="Figure 2")
+
+plA4 <- pl_A4 & theme(
+ text = element_text(size =8),  # Taille des polices
+ legend.margin = margin(t = 0, r = 0, b = 0, l = 0),
+ legend.text = element_text(size = 8),
+ legend.key.size = unit(1, "mm"),
+ axis.title = element_text(size = 10),
+ axis.text = element_text(size = 8),
+ plot.title = element_text(size = 12)
+)
+quartz(file=paste0(path2fig,"Fig2_A4.pdf"),height=10.24,width=7.05,type="pdf")
+plA4
+dev.off()
+
