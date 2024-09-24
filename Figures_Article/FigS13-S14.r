@@ -223,7 +223,11 @@ pl1 <- ggplot(input2)+
 	ylab("RT")+
 	xlab("Genomic position (kb)")+
 	coord_cartesian(ylim=c(miny,maxy),expand=T)+
-	scale_x_continuous(limits=c(minx,maxx),expand = expansion(add = c(1000,1000))) +
+	scale_x_continuous(
+		guide = "prism_minor",
+		labels=scales::unit_format(big.mark ="",suffix="",scale=1e-3,sep=""),
+		limits=c(minx,maxx),
+		expand=expansion(add = c(1000,1000)))+
 	facet_wrap2(~chrom,scales="free_x",ncol=1,strip.position = "left",strip = strip)+
 	theme(legend.position="top",axis.text.y=element_blank(),axis.title.y=element_blank())+
 	guides(color = guide_legend(nrow=1,override.aes = list(linewidth = 1)))+
@@ -242,7 +246,10 @@ pl2 <- ggplot(input2 %>% group_by(filename,chrom) %>% slice_tail(n=50) %>% ungro
 	ylab("RT")+
 	xlab("Genomic position (kb)")+
 	coord_cartesian(ylim=c(miny,maxy),expand=T)+
-	scale_x_continuous(expand = expansion(add = c(1000,1000))) +
+	scale_x_continuous(
+		guide = "prism_minor",
+		labels=scales::unit_format(big.mark ="",suffix="",scale=1e-3,sep=""),
+		expand=expansion(add = c(1000,1000)))+
 	facet_wrap2(~chrom,scales="free_x",ncol=1,strip.position = "right",strip = strip)+
 	theme(legend.position="top")+
 	guides(color = guide_legend(nrow=1,override.aes = list(linewidth = 1)))

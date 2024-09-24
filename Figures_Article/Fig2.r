@@ -33,7 +33,7 @@ chrom_sizes <- as_tibble(chrom_sizes) %>%
 fullGFF <- import("Reference_Genome/BT1multiUra.gff3") %>% as_tibble()
 ARS <- fullGFF %>% filter(Conf=="Confirmed",name!="ARS1216.5",type %in% c("ORI"))
 CEN <- fullGFF %>% filter(type=="centromere")
-
+rDNA <- fullGFF %>% filter(type=="rRNA")
 ### loading inputs
 file2load <- c(
 		"WT_rep1",
@@ -119,6 +119,7 @@ chr2plot <-"chrXII"
 
 ars2plot <- ARS %>% rename(chrom=seqnames) %>% filter(chrom==chr2plot)
 cen2plot <- CEN %>% rename(chrom=seqnames) %>% filter(chrom==chr2plot)
+rdna2plot <- rDNA %>% rename(chrom=seqnames) %>% filter(chrom==chr2plot) %>% group_by(chrom,type) %>% summarise(start=min(start),end=max(end))
 
 input2 <- bind_rows(input %>% filter(filename=="wt_rep1"),SortSeqWT)
 miny=0.8
@@ -127,6 +128,7 @@ maxy=2.2
 pl1 <- ggplot(input2 %>% filter(chrom==chr2plot))+
 	geom_vline(data=ars2plot,aes(xintercept=(start+end)/2),col=mypal[9],show.legend=F,linewidth=0.2)+
 	geom_vline(data=cen2plot,aes(xintercept=(start+end)/2),col=mypal[5],show.legend=F)+
+	geom_rect(data=rdna2plot,aes(xmin=start,xmax=end,ymin=0.9,ymax=1),col=NA,fill=mypal[21],show.legend=F,alpha=0.6)+
 	geom_point(aes(x=positions,y=mod,col=filename,group=filename),shape=16,size=0.2)+
 	scale_color_manual("",values=mypal1,labels = c("Relative copy number by sort-seq", "Mean BrdU content"))+
 	ylab("RT")+
@@ -140,7 +142,9 @@ pl1 <- ggplot(input2 %>% filter(chrom==chr2plot))+
 		minor_breaks=seq(0,seqlengths(seqinf)[12],50000),
 		expand=c(0,0))+
 	theme(legend.position="top",axis.title.x=element_blank())+
-	guides(color = guide_legend(override.aes = list(size = 2)))
+	guides(color = guide_legend(override.aes = list(size = 2)))+
+	annotate("text",x=10000,y=2.1,label="Early",hjust=0,fontface="italic",size=3)+
+	annotate("text",x=10000,y=0.9,label="Late",hjust=0,fontface="italic",size=3)
 
 
 
@@ -151,6 +155,7 @@ maxy=2.2
 pl2 <- ggplot(input2 %>% filter(chrom==chr2plot))+
 	geom_vline(data=ars2plot,aes(xintercept=(start+end)/2),col=mypal[9],show.legend=F,linewidth=0.2)+
 	geom_vline(data=cen2plot,aes(xintercept=(start+end)/2),col=mypal[5],show.legend=F)+
+	geom_rect(data=rdna2plot,aes(xmin=start,xmax=end,ymin=0.9,ymax=1),col=NA,fill=mypal[21],show.legend=F,alpha=0.6)+
 	geom_point(aes(x=positions,y=mod,col=filename,group=filename),shape=16,size=0.2)+
 	scale_color_manual("",values=mypal1,labels = c("Relative copy number by MFA-seq", "Mean BrdU content"))+
 	ylab("RT")+
@@ -177,6 +182,7 @@ maxy=2.2
 pl3 <- ggplot(input2 %>% filter(chrom==chr2plot))+
 	geom_vline(data=ars2plot,aes(xintercept=(start+end)/2),col=mypal[9],show.legend=F,linewidth=0.2)+
 	geom_vline(data=cen2plot,aes(xintercept=(start+end)/2),col=mypal[5],show.legend=F)+
+	geom_rect(data=rdna2plot,aes(xmin=start,xmax=end,ymin=0.9,ymax=1),col=NA,fill=mypal[21],show.legend=F,alpha=0.6)+
 	geom_point(aes(x=positions,y=mod,col=filename,group=filename),shape=16,size=0.2)+
 	scale_color_manual("",values=mypal2)+
 	ylab("RT")+
@@ -201,6 +207,7 @@ maxy=2.2
 pl4 <- ggplot(input2 %>% filter(chrom==chr2plot))+
 	geom_vline(data=ars2plot,aes(xintercept=(start+end)/2),col=mypal[9],show.legend=F,linewidth=0.2)+
 	geom_vline(data=cen2plot,aes(xintercept=(start+end)/2),col=mypal[5],show.legend=F)+
+	geom_rect(data=rdna2plot,aes(xmin=start,xmax=end,ymin=0.9,ymax=1),col=NA,fill=mypal[21],show.legend=F,alpha=0.6)+
 	geom_point(aes(x=positions,y=mod,col=filename,group=filename),shape=16,size=0.2)+
 	scale_color_manual("",values=mypal2)+
 	ylab("RT")+
@@ -225,6 +232,7 @@ maxy=2.2
 pl5 <- ggplot(input2 %>% filter(chrom==chr2plot))+
 	geom_vline(data=ars2plot,aes(xintercept=(start+end)/2),col=mypal[9],show.legend=F,linewidth=0.2)+
 	geom_vline(data=cen2plot,aes(xintercept=(start+end)/2),col=mypal[5],show.legend=F)+
+	geom_rect(data=rdna2plot,aes(xmin=start,xmax=end,ymin=0.9,ymax=1),col=NA,fill=mypal[21],show.legend=F,alpha=0.6)+
 	geom_point(aes(x=positions,y=mod,col=filename,group=filename),shape=16,size=0.2)+
 	scale_color_manual("",values=mypal2)+
 	ylab("RT")+
@@ -249,6 +257,7 @@ maxy=2.2
 pl6 <- ggplot(input2 %>% filter(chrom==chr2plot))+
 	geom_vline(data=ars2plot,aes(xintercept=(start+end)/2),col=mypal[9],show.legend=F,linewidth=0.2)+
 	geom_vline(data=cen2plot,aes(xintercept=(start+end)/2),col=mypal[5],show.legend=F)+
+	geom_rect(data=rdna2plot,aes(xmin=start,xmax=end,ymin=0.9,ymax=1),col=NA,fill=mypal[21],show.legend=F,alpha=0.6)+
 	geom_point(aes(x=positions,y=mod,col=filename,group=filename),shape=16,size=0.2)+
 	scale_color_manual("",values=mypal2)+
 	ylab("RT")+
@@ -288,7 +297,8 @@ maxy=2.2
 pl7 <- ggplot(input2 %>% filter(chrom==chr2plot))+
 	geom_vline(data=ars2plot,aes(xintercept=(start+end)/2),col=mypal[9],show.legend=F,linewidth=0.2)+
 	geom_vline(data=cen2plot,aes(xintercept=(start+end)/2),col=mypal[5],show.legend=F)+
-geom_point(aes(x=positions,y=mod,col=Rep,group=Rep),shape=16,size=0.2)+
+	geom_rect(data=rdna2plot,aes(xmin=start,xmax=end,ymin=0.9,ymax=1),col=NA,fill=mypal[21],show.legend=F,alpha=0.6)+
+	geom_point(aes(x=positions,y=mod,col=Rep,group=Rep),shape=16,size=0.2)+
 	scale_color_manual("",values=mypal3)+
 	ylab("RT")+
 	xlab("Genomic position on chrXII (kb)")+

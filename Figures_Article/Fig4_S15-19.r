@@ -300,9 +300,9 @@ strip <- strip_themed(background_y = elem_list_rect(fill = strip_col))
 
 plWT_red <- ggplot(toplot_red %>% filter(mut=="WT"))+
 	geom_pointdensity(aes(x=seqlen,y=meanBscaled),shape=16,size=1)+
-	geom_text(data=toplot_red %>% filter(mut=="WT") %>% group_by(teloname) %>% summarise(n=n()),aes(label="n=" %+% n),x=20,y=3,size=3)+
-	stat_cor(aes(x=seqlen,y=meanBscaled),show.legend=F,label.x=450,label.y=c(3),method="spearman",cor.coef.name="rho",size=3)+
-	coord_cartesian(ylim=c(0.5,3.5),xlim=c(0,600))+
+	geom_text(data=toplot_red %>% filter(mut=="WT") %>% group_by(teloname) %>% summarise(n=n()),aes(label="n=" %+% n),x=0,y=3,size=3)+
+	stat_cor(aes(x=seqlen,y=meanBscaled),show.legend=F,label.x=1200,label.y=c(3),method="spearman",cor.coef.name="rho",size=3)+
+	coord_cartesian(ylim=c(0.5,3.5),xlim=c(0,1600))+
 	scale_fill_continuous(type = "viridis",direction=-1,option="magma")+
 	scale_color_continuous(type = "viridis",direction=-1,option="magma")+
 	facet_wrap2("teloname",ncol=2,strip.position = "right",strip = strip)+
@@ -312,9 +312,9 @@ plWT_red <- ggplot(toplot_red %>% filter(mut=="WT"))+
 
 plRIF1_red <- ggplot(toplot_red %>% filter(mut=="RIF1"))+
 	geom_pointdensity(aes(x=seqlen,y=meanBscaled),shape=16,size=1)+
-	geom_text(data=toplot_red %>% filter(mut=="RIF1") %>% group_by(teloname) %>% summarise(n=n()),aes(label="n=" %+% n),x=150,y=3,size=3)+
+	geom_text(data=toplot_red %>% filter(mut=="RIF1") %>% group_by(teloname) %>% summarise(n=n()),aes(label="n=" %+% n),x=0,y=3,size=3)+
 	stat_cor(aes(x=seqlen,y=meanBscaled),show.legend=F,label.x=1200,label.y=c(3),method="spearman",cor.coef.name="rho",size=3)+
-	coord_cartesian(ylim=c(0.5,3.5))+
+	coord_cartesian(ylim=c(0.5,3.5),xlim=c(0,1600))+
 	scale_fill_continuous(type = "viridis",direction=-1,option="magma")+
 	scale_color_continuous(type = "viridis",direction=-1,option="magma")+
 	facet_wrap2("teloname",ncol=2,strip.position = "right",strip = strip)+
@@ -325,9 +325,9 @@ plRIF1_red <- ggplot(toplot_red %>% filter(mut=="RIF1"))+
 
 plKU70_red <- ggplot(toplot_red %>% filter(mut=="KU70"))+
 	geom_pointdensity(aes(x=seqlen,y=meanBscaled),shape=16,size=1)+
-	geom_text(data=toplot_red %>% filter(mut=="KU70") %>% group_by(teloname) %>% summarise(n=n()),aes(label="n=" %+% n),x=25,y=3,size=3)+
-	stat_cor(aes(x=seqlen,y=meanBscaled),show.legend=F,label.x=300,label.y=c(3),method="spearman",cor.coef.name="rho",size=3)+
-	coord_cartesian(ylim=c(0.5,3.5))+
+	geom_text(data=toplot_red %>% filter(mut=="KU70") %>% group_by(teloname) %>% summarise(n=n()),aes(label="n=" %+% n),x=0,y=3,size=3)+
+	stat_cor(aes(x=seqlen,y=meanBscaled),show.legend=F,label.x=1200,label.y=c(3),method="spearman",cor.coef.name="rho",size=3)+
+	coord_cartesian(ylim=c(0.5,3.5),xlim=c(0,1600))+
 	scale_fill_continuous(type = "viridis",direction=-1,option="magma")+
 	scale_color_continuous(type = "viridis",direction=-1,option="magma")+
 	facet_wrap2("teloname",ncol=2,strip.position = "right",strip = strip)+
@@ -337,9 +337,9 @@ plKU70_red <- ggplot(toplot_red %>% filter(mut=="KU70"))+
 
 plCTF19_red <- ggplot(toplot_red %>% filter(mut=="CTF19"))+
 	geom_pointdensity(aes(x=seqlen,y=meanBscaled),shape=16,size=1)+
-	geom_text(data=toplot_red %>% filter(mut=="CTF19") %>% group_by(teloname) %>% summarise(n=n()),aes(label="n=" %+% n),x=20,y=3,size=3)+
-	stat_cor(aes(x=seqlen,y=meanBscaled),show.legend=F,label.x=450,label.y=c(3),method="spearman",cor.coef.name="rho",size=3)+
-	coord_cartesian(ylim=c(0.5,3.5),xlim=c(0,600))+
+	geom_text(data=toplot_red %>% filter(mut=="CTF19") %>% group_by(teloname) %>% summarise(n=n()),aes(label="n=" %+% n),x=0,y=3,size=3)+
+	stat_cor(aes(x=seqlen,y=meanBscaled),show.legend=F,label.x=1200,label.y=c(3),method="spearman",cor.coef.name="rho",size=3)+
+	coord_cartesian(ylim=c(0.5,3.5),xlim=c(0,1600))+
 	scale_fill_continuous(type = "viridis",direction=-1,option="magma")+
 	scale_color_continuous(type = "viridis",direction=-1,option="magma")+
 	facet_wrap2("teloname",ncol=2,strip.position = "right",strip = strip)+
@@ -349,9 +349,9 @@ plCTF19_red <- ggplot(toplot_red %>% filter(mut=="CTF19"))+
 
 plFKH1_red <- ggplot(toplot_red %>% filter(mut=="FKH1"))+
 	geom_pointdensity(aes(x=seqlen,y=meanBscaled),shape=16,size=1)+
-	geom_text(data=toplot_red %>% filter(mut=="FKH1") %>% group_by(teloname) %>% summarise(n=n()),aes(label="n=" %+% n),x=20,y=3,size=3)+
-	stat_cor(aes(x=seqlen,y=meanBscaled),show.legend=F,label.x=450,label.y=c(3),method="spearman",cor.coef.name="rho",size=3)+
-	coord_cartesian(ylim=c(0.5,3.5),xlim=c(0,600))+
+	geom_text(data=toplot_red %>% filter(mut=="FKH1") %>% group_by(teloname) %>% summarise(n=n()),aes(label="n=" %+% n),x=0,y=3,size=3)+
+	stat_cor(aes(x=seqlen,y=meanBscaled),show.legend=F,label.x=1200,label.y=c(3),method="spearman",cor.coef.name="rho",size=3)+
+	coord_cartesian(ylim=c(0.5,3.5),xlim=c(0,1600))+
 	scale_fill_continuous(type = "viridis",direction=-1,option="magma")+
 	scale_color_continuous(type = "viridis",direction=-1,option="magma")+
 	facet_wrap2("teloname",ncol=2,strip.position = "right",strip = strip)+
