@@ -315,9 +315,11 @@ pl7 <- ggplot(input2 %>% filter(chrom==chr2plot))+
 
 pl <- pl1/pl2/pl3/pl4/pl5/pl6/pl7 + plot_annotation(tag_levels = 'a',title="Figure 2")
 
-quartz(file=paste0(path2fig,"Fig2.pdf"),height=14,width=10,type="pdf")
-pl
-dev.off()
+
+# quartz(file=paste0(path2fig,"Fig2.pdf"),height=14,width=10,type="pdf")
+# pl
+# dev.off()
+### edition of pl1 to fit in an A4 page
 
 input2 <- bind_rows(input %>% filter(filename=="wt_rep1"),SortSeqWT)
 miny=0.8
@@ -356,7 +358,7 @@ plA4 <- pl_A4 & theme(
  axis.text = element_text(size = 8),
  plot.title = element_text(size = 12)
 )
-quartz(file=paste0(path2fig,"Fig2_A4.pdf"),height=10.24,width=7.05,type="pdf")
+quartz(file=paste0(path2fig,"Fig2.pdf"),height=10.24,width=7.05,type="pdf")
 plA4
 dev.off()
 

@@ -4,7 +4,7 @@
 ### BrdU Base calling
 
 Raw data are available from ENA repository under accession number PRJEB76824.  
-A fast5 sample  from the WT_rep3 is available from the Zenodo repository under the DOI [10.5281/zenodo.12668295](https://doi.org/10.5281/zenodo.12668295).  
+Expected outputs using the fast5 from WT_rep3 is available from the Zenodo repository under the DOI [10.5281/zenodo.12668295](https://doi.org/10.5281/zenodo.12668295).  
 
 In order to test this procedure, the WT_rep3.tar.gz file should be downloaded and expanded into a WT_rep3/fast5 folder.  
 
