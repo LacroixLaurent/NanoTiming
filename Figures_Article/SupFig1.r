@@ -101,38 +101,38 @@ p2 <- ggplot(toplot1R)+
 	ylab("Mean BrdU content")+
 	coord_cartesian(xlim=c(0,1))
 
-pl <- p1/p2+
-	plot_layout(guides="collect")+
-	plot_annotation(title="Supplementary Figure 1",tag_levels="a")
-
-ggsave(plot=pl,file=path2fig %+% "SupFig1_v1.pdf",h=6,w=5)
+# pl <- p1/p2+
+# 	plot_layout(guides="collect")+
+# 	plot_annotation(title="Supplementary Figure 1",tag_levels="a")
+#
+# ggsave(plot=pl,file=path2fig %+% "SupFig1_v1.pdf",h=6,w=5)
 
 pl <- p1/p2+
 	plot_layout(guides="collect")+
 	plot_annotation(title="Supplementary Figure 1",tag_levels="a")&
 	facet_wrap("BrdU")
 
-ggsave(plot=pl,file=path2fig %+% "SupFig1_v1bis.pdf",h=6,w=8)
+ggsave(plot=pl,file=path2fig %+% "SupFig1.pdf",h=6,w=8)
 
 
-p1 <- ggplot(toplot1 %>% filter(B0==5))+
-	geom_point(aes(x=trel, y=T,col=BrdU), size=0.2,alpha=0.1)+
-	geom_line(aes(x=trel,y=fitted2,col=BrdU),linewidth=1)+
-	scale_colour_manual("BrdU",values=mypal)+
-	xlab("Relative replication timing")+
-	ylab("dTTP (µM)")+
-	coord_cartesian(xlim=c(0,1),ylim=c(5,50))
-
-p2 <- ggplot(toplot1R %>% filter(B0==5))+
-	geom_point(aes(x=trel, y=mean_br_bin,col=BrdU), size=0.2,alpha=0.1)+
-	geom_line(aes(x=trel,y=pB_fit,col=BrdU),linewidth=1)+
-	scale_colour_manual("BrdU",values=mypal)+
-	xlab("Relative replication timing")+
-	ylab("Mean BrdU content")+
-	coord_cartesian(xlim=c(0,1))
-
-pl <- p1/p2+
-	plot_layout(guides="collect")+
-	plot_annotation(title="Supplementary Figure 1",tag_levels="a")
-
-ggsave(plot=pl,file=path2fig %+% "SupFig1_v2.pdf",h=6,w=5)
+# p1 <- ggplot(toplot1 %>% filter(B0==5))+
+# 	geom_point(aes(x=trel, y=T,col=BrdU), size=0.2,alpha=0.1)+
+# 	geom_line(aes(x=trel,y=fitted2,col=BrdU),linewidth=1)+
+# 	scale_colour_manual("BrdU",values=mypal)+
+# 	xlab("Relative replication timing")+
+# 	ylab("dTTP (µM)")+
+# 	coord_cartesian(xlim=c(0,1),ylim=c(5,50))
+#
+# p2 <- ggplot(toplot1R %>% filter(B0==5))+
+# 	geom_point(aes(x=trel, y=mean_br_bin,col=BrdU), size=0.2,alpha=0.1)+
+# 	geom_line(aes(x=trel,y=pB_fit,col=BrdU),linewidth=1)+
+# 	scale_colour_manual("BrdU",values=mypal)+
+# 	xlab("Relative replication timing")+
+# 	ylab("Mean BrdU content")+
+# 	coord_cartesian(xlim=c(0,1))
+#
+# pl <- p1/p2+
+# 	plot_layout(guides="collect")+
+# 	plot_annotation(title="Supplementary Figure 1",tag_levels="a")
+#
+# ggsave(plot=pl,file=path2fig %+% "SupFig1_v2.pdf",h=6,w=5)
