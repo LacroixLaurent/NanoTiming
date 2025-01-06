@@ -3,7 +3,7 @@
 ***
 ## About this repository  
 
-This repository contains the scripts used for all the analysis in the *NanoTiming* manuscript [Theulot et al., 2024](https://doi.org/10.1101/2024.07.05.602252).
+This repository contains the scripts used for all the analysis in the *NanoTiming* manuscript [Theulot et al., 2024](https://doi.org/10.1038/s41467-024-55520-3).
 Raw data are available from ENA repository under accession number PRJEB76824.  
 Large files are available from the Zenodo repository under the DOI [10.5281/zenodo.12668295](https://doi.org/10.5281/zenodo.12668295)  
 * Instructions, scripts and model used to base call BrdU in nanopore reads are in the folder [*BrdU_Basecalling*](./BrdU_Basecalling).  

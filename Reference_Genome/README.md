@@ -2,7 +2,7 @@
 ***
 ### script to generate the final gff3 and the seqinf  
 
-The genome assembly was generated as explained in [Theulot et al., 2024](https://doi.org/10.1101/2024.07.05.602252). The original GFF file was produced by LRSDAY (v1.7).
+The genome assembly was generated as explained in [Theulot et al., 2024](https://doi.org/10.1038/s41467-024-55520-3). The original GFF file was produced by LRSDAY (v1.7).
 
 Gene to name correspondence table was created from S288C_reference_genome_R64-3-1_20210421.gff file downloaded from [SGD](http://sgd-archive.yeastgenome.org/sequence/S288C_reference/genome_releases/S288C_reference_genome_R64-3-1_20210421.tgz). 
 
